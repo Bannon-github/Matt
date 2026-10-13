@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Matt — Video conversations</title><link rel="stylesheet" href="/styles.css"><script src="/app.js" defer></script></head>
+<body>
+<header><a class="brand" href="/">Matt</a><span>Video conversations</span></header>
+<main>
+  <section class="intro">
+    <h1>A conversation, grounded in video.</h1>
+    <p class="lead">Ask a question. Explore the recordings. Follow every answer back to its source.</p>
+    <p>This space brings recordings and ideas together. You can also read the <a href="#declaration" id="declaration-link" aria-haspopup="dialog">Declaration of Sovereign Conscientity</a>, a personal commitment to dignity, conscience, creativity, and responsibility.</p>
+  </section>
+  <div class="workspace">
+    <section class="archive" aria-labelledby="recordings-title">
+      <h2 id="recordings-title">The recordings</h2>
+      <video id="player" controls playsinline preload="metadata" aria-label="Selected recording"></video>
+      <p id="playback-status" role="status" class="muted"></p>
+      <p class="recorded">Recorded footage <span id="synthetic"></span></p>
+      <div id="recordings" aria-label="Choose a recording"></div>
+      <p id="description" class="muted"></p>
+      <details id="transcript"><summary>Read the transcript</summary><p id="transcript-note" class="muted"></p><div id="segments"></div></details>
+    </section>
+    <section class="chat" aria-labelledby="chat-title">
+      <h2 id="chat-title">Ask the video archive</h2>
+      <p class="muted">You are talking to AI, not the person in the recording. These videos are not live.</p>
+      <p id="ai-status" class="connection" role="status">Connecting to the archive…</p>
+      <div id="conversation" role="log" aria-live="polite" aria-relevant="additions" aria-label="Conversation">
+        <div class="empty" id="empty-chat"><h3>Answers begin with the source.</h3><p>Ask about something said in the recordings. Each supported answer includes a timestamped clip.</p></div>
+      </div>
+      <form id="question-form">
+        <label for="scope">Search within</label><select id="scope"><option value="">All recordings</option></select>
+        <label for="question">Your question</label>
+        <textarea id="question" rows="2" maxlength="1000" required placeholder="What would you like to know?"></textarea>
+        <div class="actions"><button id="ask" type="submit" class="primary">Ask</button><button id="microphone" type="button">Use microphone</button><label class="check"><input type="checkbox" id="speak">Read answers aloud</label></div>
+        <button type="button" id="stop-speaking" hidden>Stop speaking</button>
+        <p id="voice-status" role="status" class="muted small"></p>
+        <p class="small muted">Questions and transcript excerpts go to OpenAI when connected. Video files are not sent. Voice input is optional; your browser may send audio to its speech provider.</p>
+      </form>
+    </section>
+  </div>
+  <footer><p id="preview-status">Local preview · Footage awaiting publication approval</p><p>Opening and closing the Declaration records your IP address, browser, language, time, and visible reading duration. Records are kept for 30 days. A completed view needs both events and 5 seconds to 30 minutes of reading.</p></footer>
+</main>
+<dialog id="declaration-dialog" aria-labelledby="declaration-title">
+  <div class="dialog-header"><span>Personal declaration</span><button id="close-declaration" type="button" autofocus aria-label="Close Declaration">Close</button></div>
+  <article id="declaration-content"><h2 id="declaration-title">Declaration of Sovereign Conscientity</h2><p>Loading the Declaration…</p></article>
+  <p class="small muted" id="logging-status" role="status"></p>
+</dialog>
+</body></html>
